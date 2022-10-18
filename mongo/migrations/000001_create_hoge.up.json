@@ -1,0 +1,11 @@
+[
+    {
+        "insert": "hoge",
+        "documents": [
+            {
+                "column1": "test1",
+                "column2": "test2"
+            }
+        ]
+    }
+]

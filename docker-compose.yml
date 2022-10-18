@@ -1,0 +1,32 @@
+version: "3"
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - network
+    volumes:
+      - mongo_db_data:/data/db
+      - ./initdb.d:/docker-entrypoint-initdb.d/
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+  postgres:
+    image: postgres:14.1-alpine
+    ports:
+      - 5432:5432
+    networks:
+      - network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin-password
+      LANG: ja_JP.utf8
+      TZ: Asia/Tokyo
+volumes:
+  postgres_data:
+  mongo_db_data:
+networks:
+  network:
